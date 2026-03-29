@@ -10,7 +10,7 @@ function pct(v){return `${fmt(v)}%`;}
 function csvEscape(v){const s=String(v??''); return (s.includes(',')||s.includes('"')||s.includes('\n'))?`"${s.replace(/"/g,'""')}"`:s;}
 function downloadFile(filename, content, type='text/csv;charset=utf-8'){const blob=new Blob([content],{type}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download=filename; a.click(); URL.revokeObjectURL(url);}
 
-const ABD_SAMPLE=`Buy Box Current;ASIN;Package: Dimension (cm³);Package: Weight (g)
+const ABD_SAMPLE=`Buy Box Price;ASIN;Dimension;Weight
 71,07;B004KSL51G;1336;898
 10,88;B00M856DSS;194;91`;
 
@@ -48,8 +48,12 @@ const DEFAULT_MX=`0 - 0.5 = 5
 20 - 40 = 42
 40 - 70 = 61`;
 
-const aliasesUS={ asin:['asin'], us_price:['buy box current','buy box','buybox','current price','price'], 'package: dimension (cm³)':['package: dimension (cm³)','package: dimension (cm3)','package dimension (cm³)','package dimension (cm3)','dimension (cm³)','dimension (cm3)'], 'package: weight (g)':['package: weight (g)','package weight (g)','weight (g)'] };
-const aliasesTarget={ asin:['asin'], price:['price','buy box current','buy box','buybox','current price'] };
+const aliasesUS={
+  asin:['asin'],
+  us_price:['buy box price','buy box current','buy box','buybox','current price','price'],
+  'package: dimension (cm³)':['dimension','package: dimension (cm³)','package: dimension (cm3)','package dimension (cm³)','package dimension (cm3)','dimension (cm³)','dimension (cm3)'],
+  'package: weight (g)':['weight','package: weight (g)','package weight (g)','weight (g)']
+};
 
 export default function Page(){
   const [tab,setTab]=useState('veri');
