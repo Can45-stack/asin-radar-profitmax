@@ -1,5 +1,5 @@
 {
-  "name": "asin-radar-profitmax-free",
+  "name": "asin-radar-profitmax-v2",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,6 +9,7 @@
   "dependencies": {
     "next": "14.2.5",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "xlsx": "^0.18.5"
   }
 }
